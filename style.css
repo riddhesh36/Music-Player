@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background: rgb(244, 236, 234);
+  background: radial-gradient(
+    circle,
+    rgba(244, 236, 234, 1) 0%,
+    rgba(161, 255, 113, 1) 100%
+  );
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(148, 255, 134);
+  margin: 0;
+}
+.music-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 28px 119px -3px rgba(135, 253, 127, 0.6);
+  -webkit-box-shadow: 0px 28px 119px -3px rgba(135, 253, 127, 0.6);
+  -moz-box-shadow: 0px 28px 119px -3px rgba(135, 253, 127, 0.6);
+  display: flex;
+  padding: 20px 30px;
+  position: relative;
+  margin: 50px 0;
+  z-index: 10;
+}
+.img-container {
+  position: relative;
+  width: 110px;
+}
+.img-container img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  border: 0;
+  left: 0;
+  bottom: 3px;
+  animation: rotate 3s linear infinite;
+
+  animation-play-state: paused;
+}
+
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.action-btn {
+  background-color: white;
+  border: 0;
+  color: #95ff75;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.action-btn.action-btn-big {
+  color: rgb(134, 255, 118);
+  font-size: 30px;
+}
+.action-btn:focus {
+  outline: none;
+}
+
+.music-info {
+  background-color: rgb(255, 255, 255, 0.5);
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: calc(100% - 40px);
+  padding: 10px 10px 10px 150px;
+  opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+}
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+.music-info h4 {
+  margin: 0;
+}
+.progress-container {
+  background-color: #777474;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 5px;
+  width: 100%;
+}
+.progress {
+  background-color: rgb(159, 255, 159);
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+@media only screen and (max-width: 500px) {
+  .music-container {
+    padding: 8px 18px;
+  }
+  .img-container img {
+    height: 60px;
+    width: 60px;
+  }
+  .action-btn {
+    font-size: 15px;
+  }
+  .action-btn.action-btn-big {
+    font-size: 20px;
+  }
+}
